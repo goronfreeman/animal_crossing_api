@@ -13,23 +13,34 @@ describe AnimalCrossingAPI::Fish do
     end
 
     it '#price returns the correct value' do
-      @fish.price.must_equal '900 Bells (WW, CF, NL)1,300 Bells (AC)'
+      @fish.price.must_equal 'Animal Crossing' => 1300,
+                             'Wild World'      => 900,
+                             'City Folk'       => 900,
+                             'New Leaf'        => 900
     end
 
     it '#size returns the correct value' do
+      # TODO: Pick unit.
       @fish.size.must_equal '3.5 in. 10 cm'
     end
 
     it '#shadow_size returns the correct value' do
+      # TODO: Match deep-sea creature?
       @fish.shadow_size.must_equal 'Tiny'
     end
 
     it '#time_of_year returns the correct value' do
-      @fish.time_of_year.must_equal 'December to February (GCN),November to February (WW, CF, NL)'
+      @fish.time_of_year.must_equal 'Animal Crossing' => 'December-February',
+                                    'Wild World'      => 'November-February',
+                                    'City Folk'       => 'November-February',
+                                    'New Leaf'        => 'November-February'
     end
 
     it '#time_of_day returns the correct value' do
-      @fish.time_of_day.must_equal 'All day'
+      @fish.time_of_day.must_equal 'Animal Crossing' => 'All day',
+                                   'Wild World'      => 'All day',
+                                   'City Folk'       => 'All day',
+                                   'New Leaf'        => 'All day'
     end
 
     it '#scientific_name returns the correct value' do
@@ -37,19 +48,30 @@ describe AnimalCrossingAPI::Fish do
     end
 
     it '#family returns the correct value' do
+      # TODO: Remove stuff after scientific family?
       @fish.family.must_equal 'Cyprinidae - Minnows/Carp'
     end
 
     it '#appearances returns the correct value' do
-      @fish.appearances.must_equal 'AF, AF+, AC, AFe+, WW, CF, NL'
+      @fish.appearances.must_equal ['Animal Forest',
+                                    'Animal Forest +',
+                                    'Animal Crossing',
+                                    'Animal Forest e+',
+                                    'Wild World',
+                                    'City Folk',
+                                    'New Leaf']
     end
 
     it '#rarity returns the correct value' do
-      @fish.rarity.must_equal 'Fairly Common (✭✭)'
+      @fish.rarity.must_equal 'name'  => 'Fairly Common',
+                              'stars' => '✭✭'
     end
 
     it '#regional_names returns the correct value' do
-      @fish.regional_names.must_equal 'Amarguillo Rodeo Bouvière Bitterling'
+      @fish.regional_names.must_equal 'Spain'   => 'Amarguillo',
+                                      'Italy'   => 'Rodeo',
+                                      'France'  => 'Bouvière',
+                                      'Germany' => 'Bitterling'
     end
   end
 

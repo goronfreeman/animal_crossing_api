@@ -13,23 +13,35 @@ describe AnimalCrossingAPI::DeepSeaCreature do
     end
 
     it '#price returns the correct value' do
-      @deep_sea_creature.price.must_equal '200 Bells'
+      @deep_sea_creature.price.must_equal 'Animal Crossing' => 200,
+                                          'Wild World'      => 200,
+                                          'City Folk'       => 200,
+                                          'New Leaf'        => 200
     end
 
     it '#size returns the correct value' do
+      # TODO: Check if this is metric.
       @deep_sea_creature.size.must_equal '30 inches'
     end
 
     it '#shadow_size returns the correct value' do
-      @deep_sea_creature.shadow_size.must_equal 'Large, stationary'
+      # TODO: Key names?
+      @deep_sea_creature.shadow_size.must_equal 'size'  => 'Large',
+                                                'speed' => 'stationary'
     end
 
     it '#time_of_year returns the correct value' do
-      @deep_sea_creature.time_of_year.must_equal 'November to July'
+      @deep_sea_creature.time_of_year.must_equal 'Animal Crossing' => 'November-July',
+                                                 'Wild World'      => 'November-July',
+                                                 'City Folk'       => 'November-July',
+                                                 'New Leaf'        => 'November-July'
     end
 
     it '#time_of_day returns the correct value' do
-      @deep_sea_creature.time_of_day.must_equal 'All day'
+      @deep_sea_creature.time_of_day.must_equal 'Animal Crossing' => 'All day',
+                                                'Wild World'      => 'All day',
+                                                'City Folk'       => 'All day',
+                                                'New Leaf'        => 'All day'
     end
 
     it '#scientific_name returns the correct value' do
@@ -41,11 +53,13 @@ describe AnimalCrossingAPI::DeepSeaCreature do
     end
 
     it '#appearances returns the correct value' do
-      @deep_sea_creature.appearances.must_equal 'NL'
+      @deep_sea_creature.appearances.must_equal ['New Leaf']
     end
 
     it '#regional_names returns the correct value' do
-      @deep_sea_creature.regional_names.must_equal 'Alga wakame   Wakame   Alga wakame'
+      @deep_sea_creature.regional_names.must_equal 'Italy'  => 'Alga wakame',
+                                                   'France' => 'Wakame',
+                                                   'Spain'  => 'Alga wakame'
     end
   end
 
@@ -54,7 +68,13 @@ describe AnimalCrossingAPI::DeepSeaCreature do
       describe 'when there are matches' do
         it 'returns an array of matching names' do
           deep_sea_creature_list = AnimalCrossingAPI::DeepSeaCreature.find('sea')
-          deep_sea_creature_list.must_equal ['Seaweed', 'Sea grapes', 'Sea urchin', 'Sea anemone', 'Sea star', 'Sea cucumber', 'Sea slug']
+          deep_sea_creature_list.must_equal ['Seaweed',
+                                             'Sea grapes',
+                                             'Sea urchin',
+                                             'Sea anemone',
+                                             'Sea star',
+                                             'Sea cucumber',
+                                             'Sea slug']
         end
       end
 

@@ -9,7 +9,11 @@ describe AnimalCrossingAPI::Song do
     end
 
     it '#games returns the correct value' do
-      @song.games.must_equal 'AFe+, WW, CF, NL, HHD'
+      @song.games.must_equal ['Animal Forest e+',
+                              'Wild World',
+                              'City Folk',
+                              'New Leaf',
+                              'Happy Home Designer']
     end
 
     it '#mood returns the correct value' do
@@ -17,11 +21,16 @@ describe AnimalCrossingAPI::Song do
     end
 
     it '#owned_by returns the correct value' do
-      @song.owned_by.must_equal 'Vladimir, Walt, Moose (NL), Booker, Copper'
+      # TODO: Happy Home Designer?
+      # @song.owned_by.must_equal ['Vladimir', 'Walt', 'Moose (NL)', 'Booker', 'Copper']
+      @song.owned_by.must_equal 'Animal Forest e+' => %w[Vladimir Walt Booker Copper],
+                                'Wild World'       => %w[Vladimir Walt Booker Copper],
+                                'City Folk'        => %w[Vladimir Walt Booker Copper],
+                                'New Leaf'         => %w[Vladimir Walt Moose Booker Copper]
     end
 
     it '#characters_on_cover returns the correct value' do
-      @song.characters_on_cover.must_equal 'Copper'
+      @song.characters_on_cover.must_equal ['Copper']
     end
   end
 

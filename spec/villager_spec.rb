@@ -21,15 +21,24 @@ describe AnimalCrossingAPI::Villager do
     end
 
     it '#birthday returns the correct value' do
-      @villager.birthday.must_equal 'October 18th (Libra)'
+      # TODO: Hash keys capitalized? Symbols?
+      # TODO: October 18, October 18th, 10/18?
+      @villager.birthday.must_equal 'date'      => 'October 18th',
+                                    'star sign' => 'Libra'
     end
 
     it '#initial_phrase returns the correct value' do
-      @villager.initial_phrase.must_equal 'hoo hoo ha (City Folk) ayyyeee'
+      # TODO: Does HHD have phrases?
+      # @villager.initial_phrase.must_equal 'hoo hoo ha (City Folk) ayyyeee'
+      @villager.initial_phrase.must_equal 'City Folk'           => 'hoo hoo ha',
+                                          'New Leaf'            => 'ayyyeee',
+                                          'Happy Home Designer' => 'ayyyeee'
     end
 
     it '#initial_clothes returns the correct value' do
-      @villager.initial_clothes.must_equal 'Red Warmup Suit'
+      @villager.initial_clothes.must_equal 'City Folk'            => 'Red Warmup Suit',
+                                           'New Leaf'             => 'Red Warmup Suit',
+                                           'Happy Home Designer'  => 'Red Warmup Suit'
     end
 
     it '#home_request returns the correct value' do
@@ -45,7 +54,9 @@ describe AnimalCrossingAPI::Villager do
     end
 
     it '#coffee returns the correct value' do
-      @villager.coffee.must_equal 'Mocha,Lots of milk,Three spoonfuls of sugar'
+      @villager.coffee.must_equal 'beans' => 'Mocha',
+                                  'milk'  => 'Lots of milk',
+                                  'sugar' => 'Three spoonfuls of sugar'
     end
 
     it '#style returns the correct value' do
@@ -57,7 +68,16 @@ describe AnimalCrossingAPI::Villager do
     end
 
     it '#appearances returns the correct value' do
-      @villager.appearances.must_equal 'CF, NL, HHD'
+      @villager.appearances.must_equal ['City Folk',
+                                        'New Leaf',
+                                        'Happy Home Designer']
+    end
+
+    it '#regional_names returns the correct value' do
+      @villager.regional_names.must_equal 'France'  => 'Gustave',
+                                          'Germany' => 'Kokong',
+                                          'Spain'   => 'Àlex',
+                                          'Italy'   => 'Gregorio'
     end
   end
 
@@ -66,7 +86,10 @@ describe AnimalCrossingAPI::Villager do
       describe 'when there are matches' do
         it 'returns an array of matching names' do
           villager_list = AnimalCrossingAPI::Villager.find('Al')
-          villager_list.must_equal %w[Al Alfonso Alice Alli]
+          villager_list.must_equal %w[Al
+                                      Alfonso
+                                      Alice
+                                      Alli]
         end
       end
 
@@ -82,7 +105,19 @@ describe AnimalCrossingAPI::Villager do
       describe 'when there are matches' do
         it 'returns an array of matching names' do
           villager_list = AnimalCrossingAPI::Villager.find_by(species: 'pig')
-          villager_list.must_equal %w[Agnes Chops Cobb Curly Gala Hugh Kevin Lucy Pancetti Peggy Rasher Spork Truffles]
+          villager_list.must_equal %w[Agnes
+                                      Chops
+                                      Cobb
+                                      Curly
+                                      Gala
+                                      Hugh
+                                      Kevin
+                                      Lucy
+                                      Pancetti
+                                      Peggy
+                                      Rasher
+                                      Spork
+                                      Truffles]
         end
       end
 

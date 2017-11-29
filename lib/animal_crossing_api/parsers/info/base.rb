@@ -48,27 +48,31 @@ module AnimalCrossingAPI
           end
 
           def construct_hash(rows)
-            keys, vals = %w[header data].map.with_index do |str, i|
-              extract_info(rows, send("#{str}_ranges").at(0), send("#{str}_ranges").at(1), i)
-            end
+            keys = extract_info(rows, header_ranges[0], header_ranges[1], 0)
+            vals = format_arr(extract_info(rows, data_ranges[0], data_ranges[1], 1))
 
+            # TODO: Refactor to use attrs from class.
             Hash[keys.map { |k| k.downcase.split.join('_').to_sym }.zip(vals)]
           end
 
           def horizontal(rows, arr)
-            format_arr(arr.flat_map { |i| rows.at(i).css('td').map(&:inner_text) })
+            arr.flat_map { |i| rows.at(i).css('td').map(&:inner_text) }
           end
 
           def vertical(rows, range, index)
-            format_arr(range.map { |i| rows.at(i).css('td').map(&:inner_text).at(index) })
+            range.map { |i| rows.at(i).css('td').map(&:inner_text).at(index) }
           end
 
-          def format_arr(arr)
+          def prep_arr(arr)
             arr.map { |str| str.strip.chomp }
           end
 
+          def format_arr(arr)
+            arr
+          end
+
           def extract_info(rows, horz_header_indices, vert_header_indices, index)
-            horizontal(rows, horz_header_indices) + vertical(rows, vert_header_indices, index)
+            prep_arr(horizontal(rows, horz_header_indices) + vertical(rows, vert_header_indices, index))
           end
 
           def header_ranges

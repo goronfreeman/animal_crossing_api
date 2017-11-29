@@ -15,25 +15,23 @@ module AnimalCrossingAPI
 
     class << self
       attr_reader :info_parser, :list, :matcher
-    end
 
-    def self.find(query)
-      super
-    end
+      def find(query)
+        super
+      end
 
-    def self.find_one(name)
-      super
-    end
+      def find_one(name)
+        super
+      end
 
-    private
-
-    def attrs
-      %i[
-        games
-        mood
-        owned_by
-        characters_on_cover
-      ]
+      def attrs
+        %i[
+          games
+          mood
+          owned_by
+          characters_on_cover
+        ]
+      end
     end
   end
 end

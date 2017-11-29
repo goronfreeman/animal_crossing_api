@@ -17,11 +17,18 @@ describe AnimalCrossingAPI::Art do
     end
 
     it '#appearances returns the correct value' do
-      @art.appearances.must_equal 'AF+, AC, AFe+, WW, CF, NL'
+      @art.appearances.must_equal ['Animal Forest +',
+                                   'Animal Crossing',
+                                   'Animal Forest e+',
+                                   'Wild World',
+                                   'City Folk',
+                                   'New Leaf']
     end
 
     it '#regional_names returns the correct value' do
-      @art.regional_names.must_equal 'Toile incroyable   Cuadro holandés   Quadro stupendo'
+      @art.regional_names.must_equal 'France' => 'Toile incroyable',
+                                     'Spain'  => 'Cuadro holandés',
+                                     'Italy'  => 'Quadro stupendo'
     end
   end
 
@@ -30,7 +37,14 @@ describe AnimalCrossingAPI::Art do
       describe 'when there are matches' do
         it 'returns an array of matching names' do
           art_list = AnimalCrossingAPI::Art.find('statue')
-          art_list.must_equal ['Ancient Statue', 'Beautiful Statue', 'Gallant Statue', 'Great Statue', 'Motherly Statue', 'Mystic Statue', 'Robust Statue', 'Valiant Statue']
+          art_list.must_equal ['Ancient Statue',
+                               'Beautiful Statue',
+                               'Gallant Statue',
+                               'Great Statue',
+                               'Motherly Statue',
+                               'Mystic Statue',
+                               'Robust Statue',
+                               'Valiant Statue']
         end
       end
 

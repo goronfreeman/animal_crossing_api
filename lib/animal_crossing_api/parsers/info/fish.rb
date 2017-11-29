@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_relative 'base'
-require_relative '../../formatters/art'
+require_relative 'creature'
+require_relative '../../formatters/fish'
 
 module AnimalCrossingAPI
   module Parser
     module Info
-      class Art < Base
+      class Fish < Creature
         class << self
           def parse(name, list)
             super
@@ -15,15 +15,15 @@ module AnimalCrossingAPI
           private
 
           def horz_header_indices
-            []
+            super
           end
 
           def vert_header_indices
-            (2..5)
+            super
           end
 
           def format_arr(arr)
-            Formatter::Art.format(arr)
+            Formatter::Fish.format(arr)
           end
         end
       end

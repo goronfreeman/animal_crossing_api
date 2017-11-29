@@ -21,6 +21,7 @@ module AnimalCrossingAPI
       class Base
         class << self
           def parse(list_url)
+            # TODO: Add image URLs
             rows          = table_rows(list_url)
             names         = names(rows)
             urls          = urls(rows)

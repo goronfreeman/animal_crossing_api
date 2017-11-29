@@ -11,4 +11,6 @@ require_relative 'animal_crossing_api/version'
 
 module AnimalCrossingAPI
   # Nothing to see here
+  # TODO: Add config for game.
+  #       Add config for measurement unit.
 end

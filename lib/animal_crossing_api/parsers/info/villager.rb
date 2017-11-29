@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'base'
+require_relative '../../formatters/villager'
 
 module AnimalCrossingAPI
   module Parser
@@ -18,7 +19,11 @@ module AnimalCrossingAPI
           end
 
           def vert_header_indices
-            (6..15)
+            (6..16)
+          end
+
+          def format_arr(arr)
+            Formatter::Villager.format(arr)
           end
         end
       end

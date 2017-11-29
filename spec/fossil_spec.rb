@@ -17,15 +17,23 @@ describe AnimalCrossingAPI::Fossil do
     end
 
     it '#price returns the correct value' do
-      @fossil.price.must_equal '1,200 Bells'
+      @fossil.price.must_equal 'Animal Crossing' => 1200,
+                               'Wild World'      => 1200,
+                               'City Folk'       => 1200,
+                               'New Leaf'        => 1200
     end
 
     it '#appearances returns the correct value' do
-      @fossil.appearances.must_equal 'Animal Crossing,Wild World,City Folk,New Leaf'
+      @fossil.appearances.must_equal ['Animal Crossing',
+                                      'Wild World',
+                                      'City Folk',
+                                      'New Leaf']
     end
 
     it '#regional_names returns the correct value' do
-      @fossil.regional_names.must_equal 'Bernstein   Ambra   Ambre'
+      @fossil.regional_names.must_equal 'Germany' => 'Bernstein',
+                                        'Italy'   => 'Ambra',
+                                        'France'  => 'Ambre'
     end
   end
 
@@ -34,7 +42,11 @@ describe AnimalCrossingAPI::Fossil do
       describe 'when there are matches' do
         it 'returns an array of matching names' do
           fossil_list = AnimalCrossingAPI::Fossil.find('diplo')
-          fossil_list.must_equal ['Diplo Chest', 'Diplo Hip', 'Diplo Neck', 'Diplo Skull', 'Diplo Tail']
+          fossil_list.must_equal ['Diplo Chest',
+                                  'Diplo Hip',
+                                  'Diplo Neck',
+                                  'Diplo Skull',
+                                  'Diplo Tail']
         end
       end
 

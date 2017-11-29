@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'base'
+require_relative '../../formatters/song'
 
 module AnimalCrossingAPI
   module Parser
@@ -24,6 +25,10 @@ module AnimalCrossingAPI
 
           def vert_header_indices
             (2..5)
+          end
+
+          def format_arr(arr)
+            Formatter::Song.format(arr)
           end
         end
       end
